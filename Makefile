@@ -6,34 +6,34 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 00:41:23 by adben-mc          #+#    #+#              #
-#    Updated: 2021/12/15 00:54:15 by adben-mc         ###   ########.fr        #
+#    Updated: 2021/12/15 03:01:46 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = so_long
+SRCS		=	srcs/main.c
 
-HEADER = includes/so_long.h
+OBJS		= $(SRCS:.c=.o)
 
-LIBFT_DIR = libft
-LIBFT_LIB = $(LIBFT_DIR)/libft.a
+NAME		=	so_long
 
-MLX_DIR = mlx
-MLX_LIB = $(MLX_DIR)/libmlx.a
+CC			=	gcc
+CFLAGS		= 	-Wall -Werror -Wextra
+MLXFLAGS	= 	-framework OpenGL -framework AppKit
 
-CC = gcc
-CFLAGS = -Wall -Werror -Wextra
-MLXFLAGS = -framework OpenGL -framework AppKit
+HEADER		=	includes/so_long.h
+
+LIBFT_DIR	=	libft
+LIBFT_LIB 	=	$(LIBFT_DIR)/libft.a
+
+MLX_DIR		=	mlx
+MLX_LIB		=	$(MLX_DIR)/libmlx.a
 
 ifdef LINUX
-MLX_DIR = mlx-linux
-MLX_LIB = $(MLX_DIR)/libmlx_Linux.a
-MLXFLAGS = -lXext -lX11 -lm
-CFLAGS += -D LINUX 
+MLX_DIR		= mlx-linux
+MLX_LIB		= $(MLX_DIR)/libmlx_Linux.a
+MLXFLAGS	= -lXext -lX11 -lm
+CFLAGS 		+= -D LINUX 
 endif
-
-SRCS = srcs/main.c 
-
-OBJS = $(SRCS:.c=.o)
 
 all: $(NAME)
 
