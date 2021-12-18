@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 00:41:23 by adben-mc          #+#    #+#              #
-#    Updated: 2021/12/15 03:01:46 by adben-mc         ###   ########.fr        #
+#    Updated: 2021/12/18 21:34:11 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,11 +28,11 @@ LIBFT_LIB 	=	$(LIBFT_DIR)/libft.a
 MLX_DIR		=	mlx
 MLX_LIB		=	$(MLX_DIR)/libmlx.a
 
-ifdef LINUX
-MLX_DIR		= mlx-linux
-MLX_LIB		= $(MLX_DIR)/libmlx_Linux.a
-MLXFLAGS	= -lXext -lX11 -lm
-CFLAGS 		+= -D LINUX 
+ifndef __APPLE__
+MLX_DIR		= 	mlx_linux
+MLX_LIB		= 	$(MLX_DIR)/libmlx_Linux.a
+MLXFLAGS	=  -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -Imlx_linux
+CFLAGS 		+= 	-D LINUX 
 endif
 
 all: $(NAME)
@@ -40,8 +40,8 @@ all: $(NAME)
 %.o: %.c $(HEADER)
 	$(CC) $(CFLAGS) -o $@ -c $<
 	
-$(NAME): $(OBJS) $(LIBFT_LIB) $(MLX_LIB) $(HEADER)
-	$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME)
+$(NAME): $(OBJS) $(LIBFT_LIB) $(MLX_LIB)
+	$(CC) $(OBJS) $(MLXFLAGS) -o $(NAME)
 
 $(LIBFT_LIB):
 	$(MAKE) bonus -C $(LIBFT_DIR)

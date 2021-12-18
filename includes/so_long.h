@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:53:53 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/15 00:55:07 by adben-mc         ###   ########.fr       */
+/*   Updated: 2021/12/18 21:29:22 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,6 @@
 # include <errno.h>
 //# include "get_next_line.h"
 # include "../libft/libft.h"
-# include "../mlx-linux/mlx.h"
+# include "../mlx_linux/mlx.h"
 
 #endif
