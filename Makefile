@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 00:41:23 by adben-mc          #+#    #+#              #
-#    Updated: 2021/12/18 21:34:11 by adben-mc         ###   ########.fr        #
+#    Updated: 2021/12/19 20:32:42 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,7 +28,7 @@ LIBFT_LIB 	=	$(LIBFT_DIR)/libft.a
 MLX_DIR		=	mlx
 MLX_LIB		=	$(MLX_DIR)/libmlx.a
 
-ifndef __APPLE__
+ifeq ($(shell uname), Linux)
 MLX_DIR		= 	mlx_linux
 MLX_LIB		= 	$(MLX_DIR)/libmlx_Linux.a
 MLXFLAGS	=  -Lmlx_linux -lmlx_Linux -L/usr/lib -lXext -lX11 -lm -Imlx_linux
@@ -41,7 +41,11 @@ all: $(NAME)
 	$(CC) $(CFLAGS) -o $@ -c $<
 	
 $(NAME): $(OBJS) $(LIBFT_LIB) $(MLX_LIB)
+ifeq ($(shell uname), Linux)
 	$(CC) $(OBJS) $(MLXFLAGS) -o $(NAME)
+else
+	$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME)
+endif
 
 $(LIBFT_LIB):
 	$(MAKE) bonus -C $(LIBFT_DIR)
