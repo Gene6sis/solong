@@ -6,55 +6,60 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:46:58 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/22 19:58:43 by adben-mc         ###   ########.fr       */
+/*   Updated: 2021/12/22 22:20:14 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-typedef struct	s_vars {
-	void	*mlx;
-	void	*win;
-}				t_vars;
-
-typedef struct	s_maps {
-	char *str;
-	char **map;
-}
-/*
-int	key_hook(int keycode, t_vars *vars)
+int ft_end(char *message)
 {
-	if (keycode == 119)
-		printf("TOP\n");
-	else if (keycode == 97)
-		printf("LEFT\n");
-	else if (keycode == 100)
-		printf("RIGHT\n");
-	else if (keycode == 115)
-		printf("DOWN\n");
-	else if (keycode == 65307)
+	if (message)
 	{
-		mlx_destroy_window(vars->mlx, vars->win);
-		exit(0);
+		printf("Error\n%s\n", message);
+		exit(EXIT_FAILURE);
 	}
 	else
-		printf("%d\n",keycode);
-	return (0);
+		exit(EXIT_SUCCESS);
 }
-*/
+static void	ft_initmlx(t_data	*data)
+{
+	data->mlx = mlx_init();
+	if (!data->mlx)
+		ft_end("MLX init failed");
+	data->move_count = 0;
+	data->walls = malloc(sizeof(void *) * 17);
+	if (!data->walls)
+		ft_end("Wall image allocation failed");
+	data->walls[16] = NULL;
+	data->map.array = malloc(sizeof(char *));
+	if (!data->map.array)
+		ft_end("Map allocation failed");
+	data->map.array[0] = NULL;
+	data->map.rows = 0;
+}
+
+static void	ft_initwindow(t_data *data)
+{
+	data->win = mlx_new_window(data->mlx, data->maps.cols * IMG_SIZE, data->map.rows * IMG_SIZE, "so_long");
+	if (!data->win)
+		ft_end("Window creation failed");
+}
+//Comprend pas suite pour le moment 
 
 int	main(int argc, char **argv)
 {
-	t_vars	vars;
-	t_maps	map;
-	char *path = argv[1];
+	t_data	data;
 
 	if (argc != 2)
-		return (printf("Incorrect number of arguments !\n") == 0);
-	vars.mlx = mlx_init();
-	vars.win = mlx_new_window(vars.mlx, 640, 480, "Hello world!");
-    mlx_pixel_put(vars.mlx, vars.win, 250, 250, 0xFFFFFF);
-	mlx_key_hook(vars.win, key_hook, &vars);
-	mlx_loop(vars.mlx);
+		ft_end("Please give me only 2 arguments !");
+	ft_initmlx(data.mlx);
+	ft_readmap(argv[1], &(data.map));
+    ft_checkmap(&data);
+	ft_sprites(&data);
+	ft_initwindow(&data);
+	//ft_screen(&data);
+	ft_hooks(&data);
+	mlx_loop(data.mlx);
 	return (-1);
 }
