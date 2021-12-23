@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 22:42:19 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/22 23:03:12 by adben-mc         ###   ########.fr       */
+/*   Updated: 2021/12/23 01:23:53 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,13 @@ static void	load_floor_wall(t_data *data)
 {
 	int		width;
 	int		height;
-	int		i;
-
+	
 	data->floor = mlx_xpm_file_to_image(data->mlx, "./assets/grass_dirt15.xpm", &width, &height);
 	if (!data->floor)
-		end_game("Failed to load floor sprite.");
-	data->walls = mlx_xpm_file_to_image(data->mlx, file_path, &width, &height);
+		ft_end("Failed to load floor sprite.");
+	data->walls = mlx_xpm_file_to_image(data->mlx, "./assets/fence_0.xpm", &width, &height);
 	if (!data->walls)
-		end_game("Failed to load wall sprite.");
+		ft_end("Failed to load wall sprite.");
 }
 
 static void	load_player(t_data *data)
@@ -56,7 +55,7 @@ static void	load_exit(t_data *data)
 		ft_end("Failed to load character sprite.");
 }
 
-int	load_sprites(t_data *data)
+int	ft_sprites(t_data *data)
 {
 	load_floor_wall(data);
 	load_player(data);

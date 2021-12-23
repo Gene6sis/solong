@@ -6,11 +6,33 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 20:44:31 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/22 22:16:17 by adben-mc         ###   ########.fr       */
+/*   Updated: 2021/12/23 01:25:37 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
+
+static char	*ft_strnstr(const char *haystack, const char *needle, size_t len)
+{
+	unsigned int	i;
+	unsigned int	j;
+
+	if (needle[0] == '\0')
+		return ((char *)haystack);
+	i = 0;
+	while (haystack[i] && i < len)
+	{
+		j = 0;
+		while (haystack[i + j] == needle[j] && i + j < len)
+		{
+			j++;
+			if (needle[j] == 0)
+				return ((char *)&haystack[i]);
+		}
+		i++;
+	}
+	return (0);
+}
 
 static int	ft_checkextension(char *path)
 {
@@ -28,15 +50,15 @@ static int	ft_checkextension(char *path)
 	return (0);
 }
 
-static int	ft_addtomap(t_map *map char *str)
+static int	ft_addtomap(t_map *map, char *str)
 {
 	char	**newmap;
 	size_t	i;
 
 	i = 0;
 	map->rows += 1;
-	newmap = malloc (sizeof(char *) * (map->rows + 1))
-	if (!new_map)
+	newmap = malloc (sizeof(char *) * (map->rows + 1));
+	if (!newmap)
 		ft_end("Allocation newline to map failed");
 	while (map->array[i])
 	{
@@ -44,12 +66,12 @@ static int	ft_addtomap(t_map *map char *str)
 		i++;
 	}
 	newmap[i++]= str;
-	newmap[i] == NULL;
+	newmap[i] = NULL;
 	i = 0;
 	while (map->array[i]) //peut poser probleme ou 
-		free(map->array[i++]) // non a voir pas la suite
+		free(map->array[i++]); // non a voir pas la suite
 	free(map->array);
-	map->array = new_map;
+	map->array = newmap;
 	return (0);
 }
 
@@ -58,8 +80,9 @@ static int ft_checklenline(char *str, int lenght)
 	int len;
 	
 	len = ft_strlen(str);
-	len -= ft_strchr(str, '\n');
-	return (lenght == len)
+	if (ft_strchr(str, '\n'))
+		len -= 1;
+	return (lenght == len);
 }
 
 int ft_readmap(char *path, t_map *map)
@@ -83,6 +106,7 @@ int ft_readmap(char *path, t_map *map)
 		new_line = get_next_line(fd);
 	}
 	close(fd);
+	return (0);
 }
 
 //A revoir, le close peut creer des leaks si erreurs avant cat exit avant de close

@@ -1,33 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/09/08 00:14:47 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/09/08 05:06:43 by adben-mc         ###   ########.fr       */
+/*   Created: 2021/12/03 16:19:33 by adben-mc          #+#    #+#             */
+/*   Updated: 2021/12/23 00:46:32 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <ctype.h>
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int	ft_isalnum(int c)
-{
-	if (ft_isalpha(c) || ft_isdigit(c))
-	{
-		return (1);
-	}
-	return (0);
-}
-/*
-int	main(int argc, char **argv)
-{
-	(void)argc;
-	printf("Moi : %d\n", ft_isalnum(atoi(argv[1])));
-	printf("Envoie : %c", atoi(argv[1]));
-}
-*/
+# include <stdlib.h>
+# include <unistd.h>
+# include <stdio.h>
+
+char	*get_next_line(int fd);
+char	*ft_strchr(const char *s, int c);
+char	*ft_strjoin(char *s1, char *s2);
+size_t	ft_strlen(const char *s);
+void	*ft_memcpy(void *dst, const void *src, size_t n);
+char	*ft_fill_str(int fd, char *str);
+char	*find_line(char *save);
+
+#endif

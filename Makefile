@@ -6,18 +6,26 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 00:41:23 by adben-mc          #+#    #+#              #
-#    Updated: 2021/12/21 11:49:55 by adben-mc         ###   ########.fr        #
+#    Updated: 2021/12/23 01:28:37 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	srcs/main.c
+SRCS		=	srcs/main.c						\
+				srcs/ft_sprites.c				\
+				srcs/ft_screen.c				\
+				srcs/ft_readmap.c				\
+				srcs/ft_hooks.c					\
+				srcs/ft_get_pixel.c				\
+				srcs/ft_check.c					\
+				gnl/get_next_line.c				\
+				gnl/get_next_line_utils.c
 
 OBJS		= $(SRCS:.c=.o)
 
 NAME		=	so_long
 
 CC			=	gcc
-CFLAGS		= 	-Wall -Werror -Wextra
+CFLAGS		= 	-Wall -Werror -Wextra -fsanitize=address
 MLXFLAGS	= 	-framework OpenGL -framework AppKit
 
 HEADER		=	includes/so_long.h
@@ -42,13 +50,13 @@ all: $(NAME)
 	
 $(NAME): $(OBJS) $(LIBFT_LIB) $(MLX_LIB)
 ifeq ($(shell uname), Linux)
-	$(CC) $(OBJS) $(MLXFLAGS) -o $(NAME)
+	$(CC)  $(CFLAGS) $(OBJS) $(MLXFLAGS) -o $(NAME)
 else
 	$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME)
 endif
 
 $(LIBFT_LIB):
-	$(MAKE) bonus -C $(LIBFT_DIR)
+	$(MAKE) -C $(LIBFT_DIR)
 
 $(MLX_LIB):
 	$(MAKE) -C $(MLX_DIR)
