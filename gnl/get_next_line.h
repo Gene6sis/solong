@@ -6,12 +6,14 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/03 16:19:33 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/08 18:20:42 by adben-mc         ###   ########.fr       */
+/*   Updated: 2021/12/26 20:28:39 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
+
+# define BUFFER_SIZE 32
 
 # include <stdlib.h>
 # include <unistd.h>

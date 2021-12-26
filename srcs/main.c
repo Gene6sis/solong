@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:46:58 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/23 00:50:55 by adben-mc         ###   ########.fr       */
+/*   Updated: 2021/12/26 20:56:56 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ static void	ft_initmlx(t_data	*data)
 	data->walls = malloc(sizeof(void *));
 	if (!data->walls)
 		ft_end("Wall image allocation failed");
-	data->walls = NULL;
 	data->map.array = malloc(sizeof(char *));
 	if (!data->map.array)
 		ft_end("Map allocation failed");
@@ -55,7 +54,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 		ft_end("Please give me only 2 arguments !");
-	ft_initmlx(data.mlx);
+	ft_initmlx(&data);
 	ft_readmap(argv[1], &(data.map));
     ft_checkmap(&data);
 	ft_sprites(&data);

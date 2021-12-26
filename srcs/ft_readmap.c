@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 20:44:31 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/23 01:25:37 by adben-mc         ###   ########.fr       */
+/*   Updated: 2021/12/26 20:39:43 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,9 @@ static int	ft_addtomap(t_map *map, char *str)
 	newmap[i++]= str;
 	newmap[i] = NULL;
 	i = 0;
+	/*
 	while (map->array[i]) //peut poser probleme ou 
-		free(map->array[i++]); // non a voir pas la suite
+		free(map->array[i++]); // non a voir pas la suite*/
 	free(map->array);
 	map->array = newmap;
 	return (0);
