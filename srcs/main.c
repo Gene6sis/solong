@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:46:58 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/26 20:56:56 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/06 12:40:49 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int ft_end(char *message)
+int	ft_end(char *message)
 {
 	if (message)
 	{
@@ -56,7 +56,7 @@ int	main(int argc, char **argv)
 		ft_end("Please give me only 2 arguments !");
 	ft_initmlx(&data);
 	ft_readmap(argv[1], &(data.map));
-    ft_checkmap(&data);
+	ft_checkmap(&data);
 	ft_sprites(&data);
 	ft_initwindow(&data);
 	ft_screen(&data);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_screen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 23:41:25 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/23 01:24:17 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/06 12:37:55 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 
 static void	ft_image_to_frame(t_data *data, void *img, int row, int col)
 {
-	int x;
-	int y;
-	int pixel;
+	int	x;
+	int	y;
+	int	pixel;
 
 	x = 0;
 	y = 0;
@@ -55,7 +55,7 @@ static void	ft_putimg(t_data *data, int row, int col)
 		ft_image_to_frame(data, on_img, row, col);
 }
 
-int ft_screen(t_data *data)
+int	ft_screen(t_data *data)
 {
 	int		row;
 	int		col;

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   ft_check.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 20:46:41 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/23 01:01:17 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/06 12:42:37 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-static void ft_value_check(t_data *data, int row, int col)
+static void	ft_value_check(t_data *data, int row, int col)
 {
 	if (data->map.array[row][col] == PLAYER)
 	{
@@ -31,10 +31,10 @@ static void ft_value_check(t_data *data, int row, int col)
 			ft_end("Map not surrounded by walls.");
 }
 
-int ft_checkmap(t_data *data)
+int	ft_checkmap(t_data *data)
 {
-	int row;
-	int col;
+	int	row;
+	int	col;
 
 	row = 0;
 	data->exit_count = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sprites.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
+/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 22:42:19 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/23 01:23:53 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/06 12:39:46 by adam             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ static void	load_floor_wall(t_data *data)
 {
 	int		width;
 	int		height;
-	
+
 	data->floor = mlx_xpm_file_to_image(data->mlx, "./assets/grass_dirt15.xpm", &width, &height);
 	if (!data->floor)
 		ft_end("Failed to load floor sprite.");
