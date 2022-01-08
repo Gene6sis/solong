@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:46:58 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/06 12:40:49 by adam             ###   ########.fr       */
+/*   Updated: 2022/01/08 19:55:01 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ int	ft_end(char *message)
 {
 	if (message)
 	{
-		printf("Error\n%s\n", message);
+		printf("Error : %s\n", message);
 		exit(EXIT_FAILURE);
 	}
 	else
 		exit(EXIT_SUCCESS);
 }
 
-static void	ft_initmlx(t_data	*data)
+static void	ft_initmlx(t_data *data)
 {
 	data->mlx = mlx_init();
 	if (!data->mlx)
@@ -31,10 +31,10 @@ static void	ft_initmlx(t_data	*data)
 	data->move_count = 0;
 	data->walls = malloc(sizeof(void *));
 	if (!data->walls)
-		ft_end("Wall image allocation failed");
+		ft_end("Wall image allocation failed"); // 1
 	data->map.array = malloc(sizeof(char *));
 	if (!data->map.array)
-		ft_end("Map allocation failed");
+		ft_end("Map allocation failed"); // 2
 	data->map.array[0] = NULL;
 	data->map.rows = 0;
 }

@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 00:41:23 by adben-mc          #+#    #+#              #
-#    Updated: 2021/12/26 20:54:01 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/01/08 21:36:05 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,7 +25,7 @@ OBJS		= $(SRCS:.c=.o)
 NAME		=	so_long
 
 CC			=	gcc
-CFLAGS		= 	-Wall -Werror -Wextra -fsanitize=address
+CFLAGS		= 	-Wall -Werror -Wextra -g3#-fsanitize=address
 MLXFLAGS	= 	-framework OpenGL -framework AppKit
 
 HEADER		=	includes/so_long.h

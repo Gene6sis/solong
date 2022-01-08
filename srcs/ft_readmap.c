@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_readmap.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 20:44:31 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/06 12:41:55 by adam             ###   ########.fr       */
+/*   Updated: 2022/01/08 21:39:53 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static int	ft_checkextension(char *path)
 		if (ber == (path + lenght - 4))
 			return (1);
 	}
-	ft_end("Extension file name failed");
+	ft_end("Extension file name failed"); // 3
 	return (0);
 }
 
@@ -57,9 +57,9 @@ static int	ft_addtomap(t_map *map, char *str)
 
 	i = 0;
 	map->rows += 1;
-	newmap = malloc (sizeof(char *) * (map->rows + 1));
+	newmap = malloc(sizeof(char *) * (map->rows + 1));
 	if (!newmap)
-		ft_end("Allocation newline to map failed");
+		ft_end("Allocation newline to map failed"); //3
 	while (map->array[i])
 	{
 		newmap[i] = map->array[i];
@@ -70,6 +70,7 @@ static int	ft_addtomap(t_map *map, char *str)
 	i = 0;
 	free(map->array);
 	map->array = newmap;
+	free(newmap);
 	return (0);
 }
 
@@ -91,15 +92,22 @@ int	ft_readmap(char *path, t_map *map)
 	ft_checkextension(path);
 	fd = open(path, O_RDONLY);
 	if (fd < 0)
-		ft_end("Open file failed");
+		ft_end("Open file failed"); //3
 	new_line = get_next_line(fd);
 	if (!new_line)
-		ft_end("Read file failed");
+	{
+		close(fd);
+		ft_end("Read file failed"); //3
+	}
 	map->cols = ft_strlen(new_line) - 1;
 	while (new_line)
 	{
 		if (!ft_checklenline(new_line, map->cols))
-			ft_end("Map isn't rectangular");
+		{
+			free(new_line);
+			close(fd);
+			ft_end("Map isn't rectangular"); //3
+		}
 		ft_addtomap(map, new_line);
 		new_line = get_next_line(fd);
 	}
