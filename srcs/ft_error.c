@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 01:18:15 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/11 01:42:37 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/11 19:53:38 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@ static void	ft_close(t_data *data, int error)
 {
 	if (error >= 4)
 		ft_destroy_image(data->mlx, data->floor);
-	if (error >= 5)
-		ft_destroy_image(data->mlx, data->walls);
+	//if (error >= 5)
+	//	ft_destroy_image(data->mlx, data->walls);
 	if (error >= 6)
 		ft_destroy_image(data->mlx, data->player.img);
 	if (error >= 7)
@@ -38,7 +38,7 @@ void	ft_error(t_data *data, int error)
 	ft_close(data, error);
 	if (error >= 1)
 		free(data->mlx);
-	if (error >= 2)
+	if (error >= 2 && error < 5)
 		free(data->walls);
 	if (error >= 3)
 	{
@@ -46,5 +46,4 @@ void	ft_error(t_data *data, int error)
 			free(data->map.array[i++]);
 		free(data->map.array);
 	}
-	free(data);
 }
