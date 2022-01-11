@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:53:53 by adben-mc          #+#    #+#             */
-/*   Updated: 2021/12/23 01:15:32 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/10 02:23:11 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,15 +89,16 @@ typedef struct	s_data {
 	t_collectable	collectable;
 }				t_data;
 
-void	ft_hooks(t_data *data);
-int ft_end(char *message);
-int ft_checkmap(t_data *data);
-void	put_pixel_to_frame_buf(t_data *data, int x, int y, int color);
+void			ft_hooks(t_data *data);
+int 			ft_end(char *message, t_data *data, int error);
+int 			ft_checkmap(t_data *data);
+void			put_pixel_to_frame_buf(t_data *data, int x, int y, int color);
 unsigned int	ft_get_pixel(int x, int y, void *img);
-int ft_readmap(char *path, t_map *map);
-int ft_screen(t_data *data);
-int	ft_sprites(t_data *data);
-
-int	key_hook(int keycode, t_data *data);
+int 			ft_readmap(char *path, t_map *map, t_data *data);
+int 			ft_screen(t_data *data);
+int				ft_sprites(t_data *data);
+void			ft_error(t_data *data, int error);
+int				key_hook(int keycode, t_data *data);
+void			ft_destroy_image(void *mlx, void *xpm);
 
 #endif

@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 00:41:23 by adben-mc          #+#    #+#              #
-#    Updated: 2022/01/08 21:36:05 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/01/11 01:41:30 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,6 +17,7 @@ SRCS		=	srcs/main.c						\
 				srcs/ft_hooks.c					\
 				srcs/ft_get_pixel.c				\
 				srcs/ft_check.c					\
+				srcs/ft_error.c					\
 				gnl/get_next_line.c				\
 				gnl/get_next_line_utils.c
 
@@ -25,7 +26,7 @@ OBJS		= $(SRCS:.c=.o)
 NAME		=	so_long
 
 CC			=	gcc
-CFLAGS		= 	-Wall -Werror -Wextra -g3#-fsanitize=address
+CFLAGS		= 	-Wall -Werror -Wextra -g3 -fsanitize=address
 MLXFLAGS	= 	-framework OpenGL -framework AppKit
 
 HEADER		=	includes/so_long.h

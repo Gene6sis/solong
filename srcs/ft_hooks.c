@@ -3,19 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   ft_hooks.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 00:33:25 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/06 12:39:55 by adam             ###   ########.fr       */
+/*   Updated: 2022/01/11 01:39:54 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-void	ft_hooks(t_data *data)
+int ft_useless(t_data *data)
+{
+	ft_end(NULL, data, 9);
+	return (0);
+}
+
+void ft_hooks(t_data *data)
 {
 	mlx_key_hook(data->win, key_hook, data);
-	mlx_hook(data->win, 17, (1L << 17), ft_end, NULL);
+	mlx_hook(data->win, 17, (1L << 17), ft_useless, data);
 	mlx_hook(data->win, 12, (1L << 15), ft_screen, data);
 }
 
@@ -33,7 +39,7 @@ static int	check_action(t_data *data, int row, int col)
 			if (data->collectable.count == 0)
 			{
 				printf("Moves: %d\nYou won!\n", ++data->move_count);
-				ft_end(NULL);
+				ft_end(NULL, data, 9);
 			}
 		}
 		printf("Moves: %d\n", ++data->move_count);
