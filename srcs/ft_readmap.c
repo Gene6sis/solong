@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 20:44:31 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/17 20:03:19 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/17 22:23:45 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,14 +73,22 @@ static int	ft_addtomap(t_map *map, char *str, t_data *data)
 	return (0);
 }
 
-static int	ft_checklenline(char *str, int lenght)
+static int	ft_checklenline(char **array, int lenght)
 {
 	int	len;
+	int	i;
 
-	len = ft_strlen(str);
-	if (ft_strchr(str, '\n'))
-		len -= 1;
-	return (lenght == len);
+	i = 0;
+	while (array[i])
+	{
+		len = ft_strlen(array[i]);
+		if (ft_strchr(array[i], '\n'))
+			len -= 1;
+		i++;
+		if (len != lenght)
+			return (0);
+	}
+	return (1);
 }
 
 int	ft_readmap(char *path, t_map *map, t_data *data)
@@ -98,14 +106,14 @@ int	ft_readmap(char *path, t_map *map, t_data *data)
 	map->cols = ft_strlen(new_line) - 1;
 	while (new_line)
 	{
-		if (!ft_checklenline(new_line, map->cols))
-		{
-			free(new_line);
-			ft_end("Map isn't rectangular", data, 3);
-		}
 		ft_addtomap(map, new_line, data);
 		new_line = get_next_line(fd);
 	}
 	close(fd);
+	if (!ft_checklenline(data->map.array, map->cols))
+	{
+		free(new_line);
+		ft_end("Map isn't rectangular", data, 3);
+	}
 	return (0);
 }
