@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:53:53 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/10 02:23:11 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/17 20:07:55 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ typedef enum e_tiletype {
 }				t_tiletype;
 
 # ifdef LINUX
+
 typedef enum e_keycode {
 	UP = 119,
 	DOWN = 115,
@@ -42,7 +43,9 @@ typedef enum e_keycode {
 	RIGHT = 100,
 	ESC = 65307,
 }				t_keycode;
+
 # else
+
 typedef enum e_keycode {
 	UP = 13,
 	DOWN = 1,
@@ -70,7 +73,7 @@ typedef struct s_map {
 	int		cols;
 }				t_map;
 
-typedef struct	s_data {
+typedef struct s_data {
 	void			*mlx;
 	void			*win;
 	int				move_count;
@@ -90,12 +93,12 @@ typedef struct	s_data {
 }				t_data;
 
 void			ft_hooks(t_data *data);
-int 			ft_end(char *message, t_data *data, int error);
-int 			ft_checkmap(t_data *data);
+int				ft_end(char *message, t_data *data, int error);
+int				ft_checkmap(t_data *data);
 void			put_pixel_to_frame_buf(t_data *data, int x, int y, int color);
 unsigned int	ft_get_pixel(int x, int y, void *img);
-int 			ft_readmap(char *path, t_map *map, t_data *data);
-int 			ft_screen(t_data *data);
+int				ft_readmap(char *path, t_map *map, t_data *data);
+int				ft_screen(t_data *data);
 int				ft_sprites(t_data *data);
 void			ft_error(t_data *data, int error);
 int				key_hook(int keycode, t_data *data);

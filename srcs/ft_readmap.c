@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 20:44:31 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/17 19:58:07 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/17 20:03:19 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,17 +94,13 @@ int	ft_readmap(char *path, t_map *map, t_data *data)
 		ft_end("Open file failed", data, 3);
 	new_line = get_next_line(fd);
 	if (!new_line)
-	{
-		close(fd);
 		ft_end("Read file failed", data, 3);
-	}
 	map->cols = ft_strlen(new_line) - 1;
 	while (new_line)
 	{
 		if (!ft_checklenline(new_line, map->cols))
 		{
 			free(new_line);
-			close(fd);
 			ft_end("Map isn't rectangular", data, 3);
 		}
 		ft_addtomap(map, new_line, data);

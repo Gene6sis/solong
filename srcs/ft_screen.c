@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_screen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: adam <adam@student.42.fr>                  +#+  +:+       +#+        */
+/*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 23:41:25 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/06 12:37:55 by adam             ###   ########.fr       */
+/*   Updated: 2022/01/17 20:05:30 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	ft_image_to_frame(t_data *data, void *img, int row, int col)
 		{
 			pixel = ft_get_pixel(x, y, img);
 			if (!(pixel & (0xFF << 24)))
-				put_pixel_to_frame_buf(data, (col * IMG_SIZE) + x, (row * IMG_SIZE) + y, pixel);
+				put_pixel_to_frame_buf(data, (col * IMG_SIZE) + x,
+					(row * IMG_SIZE) + y, pixel);
 			x++;
 		}
 		y++;
@@ -72,7 +73,8 @@ int	ft_screen(t_data *data)
 		}
 		row++;
 	}
-	ft_image_to_frame(data, data->player.img, data->player.row, data->player.col);
+	ft_image_to_frame(data, data->player.img, data->player.row,
+		data->player.col);
 	mlx_put_image_to_window(data->mlx, data->win, data->frame_buf, 0, 0);
 	return (0);
 }
