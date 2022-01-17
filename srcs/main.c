@@ -6,13 +6,13 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:46:58 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/11 19:59:21 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:32:20 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
 
-int	ft_end(char *message, t_data *data, int error) //changer
+int	ft_end(char *message, t_data *data, int error)
 {
 	ft_error(data, error);
 	if (message)
@@ -30,23 +30,25 @@ static void	ft_initmlx(t_data *data)
 	if (!data->mlx)
 		ft_end("MLX init failed", data, 0);
 	data->move_count = 0;
-	data->walls = malloc(sizeof(void *));
-	if (!data->walls)
-		ft_end("Wall image allocation failed", data, 1); // 1
 	data->map.array = malloc(sizeof(char *));
 	if (!data->map.array)
-		ft_end("Map allocation failed", data, 2); // 2
+		ft_end("Map allocation failed", data, 2);
 	data->map.array[0] = NULL;
 	data->map.rows = 0;
 }
 
 static void	ft_initwindow(t_data *data)
 {
-	data->win = mlx_new_window(data->mlx, data->map.cols * IMG_SIZE, data->map.rows * IMG_SIZE, "so_long");
+	data->win = mlx_new_window(data->mlx, data->map.cols * IMG_SIZE,
+			data->map.rows * IMG_SIZE, "so_long");
 	if (!data->win)
 		ft_end("Window creation failed", data, 8);
-	data->frame_buf = mlx_new_image(data->mlx, data->map.cols * IMG_SIZE, data->map.rows * IMG_SIZE);
-	data->addr = mlx_get_data_addr(data->frame_buf, &data->bits_per_pixel, &data->line_length, &data->endian);
+	data->frame_buf = mlx_new_image(data->mlx, data->map.cols * IMG_SIZE,
+			data->map.rows * IMG_SIZE);
+	if (!data->frame_buf)
+		ft_end("Frame creation failed", data, 9);
+	data->addr = mlx_get_data_addr(data->frame_buf, &data->bits_per_pixel,
+			&data->line_length, &data->endian);
 }
 
 int	main(int argc, char **argv)

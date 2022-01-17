@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 20:46:41 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/11 00:00:01 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/17 19:31:42 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@ static void	ft_value_check(t_data *data, int row, int col)
 	if (data->map.array[row][col] == EXIT)
 		(data->exit_count)++;
 	if (!ft_strchr("01CPE", data->map.array[row][col]))
-		ft_end("Invalid character in map.", data, 3); //3
-	if (row == 0 || row == data->map.rows - 1 || col == 0 || col == data->map.cols - 1)
+		ft_end("Invalid character in map.", data, 3);
+	if (row == 0 || row == data->map.rows - 1 || col == 0
+		|| col == data->map.cols - 1)
 		if (data->map.array[row][col] != WALL)
-			ft_end("Map not surrounded by walls.", data, 3); //3
+			ft_end("Map not surrounded by walls.", data, 3);
 }
 
 int	ft_checkmap(t_data *data)
@@ -50,8 +51,9 @@ int	ft_checkmap(t_data *data)
 		}
 		row++;
 	}
-	if (data->exit_count < 1 || data->player_count != 1 || data->collectable.count < 1)
-		ft_end("Invalid chars in map", data, 3); // 3
+	if (data->exit_count < 1 || data->player_count != 1
+		|| data->collectable.count < 1)
+		ft_end("Invalid chars in map", data, 3);
 	return (0);
 }
 
