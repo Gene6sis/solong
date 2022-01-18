@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 00:33:25 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/17 19:53:03 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/18 21:03:20 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,26 @@ int	ft_useless(t_data *data)
 {
 	ft_end(NULL, data, 10);
 	return (0);
+}
+
+static void ft_moves(int move)
+{
+	int nb;
+	int i;
+
+	i = 0;
+	nb = ft_size(move - 1) + 1;
+	printf("Size : %d", nb);
+	if (move == 1)
+		printf("Moves : ");
+	if (move > 1)
+		while (i < nb)
+		{
+			write(1, "\b", 1);
+			i++;
+		}
+	printf("%d", move);
+	printf("\n");
 }
 
 void	ft_hooks(t_data *data)
@@ -38,11 +58,12 @@ static int	check_action(t_data *data, int row, int col)
 		{
 			if (data->collectable.count == 0)
 			{
-				printf("Moves: %d\nYou won!\n", ++data->move_count);
+				ft_moves(++data->move_count);
+				printf("You won!\n");
 				ft_end(NULL, data, 10);
 			}
 		}
-		printf("Moves: %d\n", ++data->move_count);
+		ft_moves(++data->move_count);
 		return (1);
 	}
 	return (0);

@@ -1,5 +1,6 @@
 SRCS	=	ft_strchr.c				\
-			ft_strlen.c
+			ft_strlen.c				\
+			ft_size.c
 
 OBJS	= 	${SRCS:.c=.o}
 
