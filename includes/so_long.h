@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:53:53 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 03:45:24 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 04:17:10 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,6 @@ void			ft_error(t_data *data, int error);
 int				key_hook(int keycode, t_data *data);
 void			ft_destroy_image(void *mlx, void *xpm);
 void			ft_moves(t_data *data);
+void			load_enemy(t_data *data);
 
 #endif
