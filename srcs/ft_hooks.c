@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 00:33:25 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 03:19:45 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 03:27:10 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,6 @@ void	ft_moves(t_data *data)
 {
 	char	*str;
 
-	printf("!@#");
 	str = ft_itoa(data->move_count);
 	mlx_string_put(data->mlx, data->win, 32, 36, 0xFFFFFFFF, str);
 	free(str);

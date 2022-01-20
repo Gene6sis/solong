@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 23:41:25 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/17 20:05:30 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 03:25:46 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,6 @@ int	ft_screen(t_data *data)
 	ft_image_to_frame(data, data->player.img, data->player.row,
 		data->player.col);
 	mlx_put_image_to_window(data->mlx, data->win, data->frame_buf, 0, 0);
+	ft_moves(data);
 	return (0);
 }
