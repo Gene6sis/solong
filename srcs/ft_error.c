@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 01:18:15 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/17 22:29:07 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 04:12:32 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,11 @@ static void	ft_close(t_data *data, int error)
 		ft_destroy_image(data->mlx, data->collectable.img);
 	if (error >= 8)
 		ft_destroy_image(data->mlx, data->exit);
-	if (error >= 10)
+	if (error >= 9 && data->enemy_count != 0)
+		ft_destroy_image(data->mlx, data->enemy);
+	if (error >= 11)
 		ft_destroy_image(data->mlx, data->frame_buf);
-	if (data->win != NULL && error >= 10)
+	if (data->win != NULL && error >= 11)
 	{
 		mlx_clear_window(data->mlx, data->win);
 		mlx_destroy_window(data->mlx, data->win);

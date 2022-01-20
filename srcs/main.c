@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:46:58 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 00:20:31 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 04:07:12 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,11 @@ static void	ft_initwindow(t_data *data)
 	data->win = mlx_new_window(data->mlx, data->map.cols * IMG_SIZE,
 			data->map.rows * IMG_SIZE, "so_long");
 	if (!data->win)
-		ft_end("Window creation failed", data, 8);
+		ft_end("Window creation failed", data, 9);
 	data->frame_buf = mlx_new_image(data->mlx, data->map.cols * IMG_SIZE,
 			data->map.rows * IMG_SIZE);
 	if (!data->frame_buf)
-		ft_end("Frame creation failed", data, 9);
+		ft_end("Frame creation failed", data, 10);
 	data->addr = mlx_get_data_addr(data->frame_buf, &data->bits_per_pixel,
 			&data->line_length, &data->endian);
 }

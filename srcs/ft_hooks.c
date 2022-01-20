@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 00:33:25 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 03:27:10 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 04:08:29 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 int	ft_useless(t_data *data)
 {
-	ft_end(NULL, data, 10);
+	ft_end(NULL, data, 11);
 	return (0);
 }
 
@@ -43,13 +43,18 @@ static int	check_action(t_data *data, int row, int col)
 			data->collectable.count--;
 			data->map.array[row][col] = EMPTY;
 		}
+		if (data->map.array[row][col] == ENEMY)
+		{
+			printf("You losed, RIP !\n");
+			ft_end(NULL, data, 11);
+		}
 		if (data->map.array[row][col] == EXIT)
 		{
 			if (data->collectable.count == 0)
 			{
 				data->move_count++;
 				printf("You won with %d moves!\n", data->move_count);
-				ft_end(NULL, data, 10);
+				ft_end(NULL, data, 11);
 			}
 		}
 		data->move_count++;

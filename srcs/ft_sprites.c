@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 22:42:19 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/17 19:30:09 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 04:06:56 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,11 +60,24 @@ static void	load_exit(t_data *data)
 		ft_end("Failed to load character sprite.", data, 7);
 }
 
+static void	load_enemy(t_data *data)
+{
+	int		width;
+	int		height;
+
+	data->enemy = mlx_xpm_file_to_image(data->mlx, "./assets/enemy.xpm", &width,
+			&height);
+	if (!data->enemy)
+		ft_end("Failed to load enemy sprite.", data, 8);
+}
+
 int	ft_sprites(t_data *data)
 {
 	load_floor_wall(data);
 	load_player(data);
 	load_collectable(data);
 	load_exit(data);
+	if (data->enemy_count != 0)
+		load_enemy(data);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 20:46:41 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/17 19:31:42 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 03:46:31 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,9 @@ static void	ft_value_check(t_data *data, int row, int col)
 		data->collectable.count++;
 	if (data->map.array[row][col] == EXIT)
 		(data->exit_count)++;
-	if (!ft_strchr("01CPE", data->map.array[row][col]))
+	if (data->map.array[row][col] == ENEMY)
+		(data->enemy_count)++;
+	if (!ft_strchr("01CPEX", data->map.array[row][col]))
 		ft_end("Invalid character in map.", data, 3);
 	if (row == 0 || row == data->map.rows - 1 || col == 0
 		|| col == data->map.cols - 1)
@@ -40,6 +42,7 @@ int	ft_checkmap(t_data *data)
 	row = 0;
 	data->exit_count = 0;
 	data->player_count = 0;
+	data->enemy_count = 0;
 	data->collectable.count = 0;
 	while (row < data->map.rows)
 	{

@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:53:53 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 03:01:24 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 03:45:24 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ typedef enum e_tiletype {
 	COLLECTABLE = 'C',
 	PLAYER = 'P',
 	EXIT = 'E',
+	ENEMY = 'X',
 }				t_tiletype;
 
 # ifdef LINUX
@@ -79,9 +80,11 @@ typedef struct s_data {
 	int				move_count;
 	int				exit_count;
 	int				player_count;
+	int				enemy_count;
 	void			*exit;
 	void			*floor;
 	void			*walls;
+	void			*enemy;
 	void			*frame_buf;
 	char			*addr;
 	int				bits_per_pixel;
