@@ -6,7 +6,7 @@
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 00:33:25 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 03:18:42 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 03:19:45 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	check_action(t_data *data, int row, int col)
 			if (data->collectable.count == 0)
 			{
 				data->move_count++;
-				printf("You won with %d moves!\n");
+				printf("You won with %d moves!\n", data->move_count);
 				ft_end(NULL, data, 10);
 			}
 		}
