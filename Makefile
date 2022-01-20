@@ -6,7 +6,7 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 00:41:23 by adben-mc          #+#    #+#              #
-#    Updated: 2022/01/17 22:30:55 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/01/20 03:15:53 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,6 +33,7 @@ HEADER		=	includes/so_long.h
 
 LIBFT_DIR	=	libft
 LIBFT_LIB 	=	$(LIBFT_DIR)/libft.a
+LIBFT_FLAG  =   -L libft -lft
 
 MLX_DIR		=	mlx
 MLX_LIB		=	$(MLX_DIR)/libmlx.a
@@ -51,7 +52,7 @@ all: $(NAME)
 	
 $(NAME): $(OBJS) $(LIBFT_LIB) $(MLX_LIB)
 ifeq ($(shell uname), Linux)
-	$(CC)  $(CFLAGS) $(OBJS) $(MLXFLAGS) -o $(NAME)
+	$(CC)  $(CFLAGS) $(OBJS) $(MLXFLAGS) $(LIBFT_FLAG) -o $(NAME)
 else
 	$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME)
 endif

@@ -1,33 +1,52 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_size.c                                          :+:      :+:    :+:   */
+/*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/01/18 20:43:59 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 00:22:35 by adben-mc         ###   ########.fr       */
+/*   Created: 2021/10/13 12:26:40 by adben-mc          #+#    #+#             */
+/*   Updated: 2022/01/20 01:57:29 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_size(int nbr)
+char	*ft_itoa(int n)
 {
-	int	i;
-	int	nb;
+	char		*res;
+	int			i;
+	int			min;
+	long int	nb;
 
-	i = 0;
-	nb = nbr;
-	if (nb <= 0)
+	nb = n;
+	i = ft_size(nb);
+	min = 0;
+	res = malloc(sizeof(char) * (i + 1));
+	if (!res)
+		return (NULL);
+	if (nb < 0)
 	{
+		res[0] = '-';
 		nb = -nb;
-		i += 1;
+		min = 1;
 	}
-	while (nb)
+	res[i] = '\0';
+	while (--i >= min)
 	{
-		nb = nb / 10;
-		i++;
+		res[i] = (nb % 10) + 48;
+		nb /= 10;
 	}
-	return (i);
+	return (res);
 }
+
+/*
+#include <stdlib.h>
+
+int main(int ac, char **argv)
+{
+	(void)ac;
+	ft_itoa(atoi(argv[1]));
+	return (0);
+}
+*/
