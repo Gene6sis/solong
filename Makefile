@@ -6,11 +6,11 @@
 #    By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/12/15 00:41:23 by adben-mc          #+#    #+#              #
-#    Updated: 2022/01/20 03:27:18 by adben-mc         ###   ########.fr        #
+#    Updated: 2022/01/20 05:48:41 by adben-mc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-SRCS		=	srcs/main.c						\
+SRCS		=	srcs/ft_main.c					\
 				srcs/ft_sprites.c				\
 				srcs/ft_screen.c				\
 				srcs/ft_readmap.c				\
@@ -21,7 +21,19 @@ SRCS		=	srcs/main.c						\
 				gnl/get_next_line.c				\
 				gnl/get_next_line_utils.c
 
+SRCS_BONUS	=	srcs/ft_main_bonus.c			\
+				srcs/ft_sprites_bonus.c			\
+				srcs/ft_screen_bonus.c			\
+				srcs/ft_readmap_bonus.c			\
+				srcs/ft_hooks_bonus.c			\
+				srcs/ft_get_pixel_bonus.c		\
+				srcs/ft_check_bonus.c			\
+				srcs/ft_error_bonus.c			\
+				gnl/get_next_line.c				\
+				gnl/get_next_line_utils.c
+
 OBJS		= $(SRCS:.c=.o)
+OBJS_BONUS	= $(SRCS_BONUS:.c=.o)
 
 NAME		=	so_long
 
@@ -65,7 +77,7 @@ $(MLX_LIB):
 
 clean:
 	$(RM) $(OBJS)
-	$(RM) $(BONUS_OBJS)
+	$(RM) $(OBJS_BONUS)
 	$(MAKE) clean -C $(LIBFT_DIR)
 	$(MAKE) clean -C $(MLX_DIR)
 
@@ -75,5 +87,12 @@ fclean: clean
 	$(RM) $(MLX_LIB)
 
 re: fclean all
+
+bonus: $(OBJS_BONUS) $(LIBFT_LIB) $(MLX_LIB)
+ifeq ($(shell uname), Linux)
+	$(CC)  $(CFLAGS) $(OBJS_BONUS) $(MLXFLAGS) $(LIBFT_FLAG) -o $(NAME)
+else
+	$(CC) $(CFLAGS) $(MLXFLAGS) $(OBJS_BONUS) $(LIBFT_LIB) $(MLX_LIB) -o $(NAME)
+endif
 
 .PHONY: all clean fclean re bonus

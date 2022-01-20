@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_hooks.c                                         :+:      :+:    :+:   */
+/*   ft_hooks_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 00:33:25 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 05:11:51 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 05:05:12 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 int	ft_useless(t_data *data)
 {
@@ -27,7 +27,11 @@ void	ft_hooks(t_data *data)
 
 void	ft_moves(t_data *data)
 {
-	printf("Moves : %d\n", data->move_count);
+	char	*str;
+
+	str = ft_itoa(data->move_count);
+	mlx_string_put(data->mlx, data->win, 32, 36, 0xFFFFFFFF, str);
+	free(str);
 }
 
 static int	check_action(t_data *data, int row, int col)
@@ -39,18 +43,21 @@ static int	check_action(t_data *data, int row, int col)
 			data->collectable.count--;
 			data->map.array[row][col] = EMPTY;
 		}
+		if (data->map.array[row][col] == ENEMY)
+		{
+			printf("You losed, RIP !\n");
+			ft_end(NULL, data, 11);
+		}
 		if (data->map.array[row][col] == EXIT)
 		{
 			if (data->collectable.count == 0)
 			{
 				data->move_count++;
-				ft_moves(data);
 				printf("You won with %d moves!\n", data->move_count);
 				ft_end(NULL, data, 11);
 			}
 		}
 		data->move_count++;
-		ft_moves(data);
 		return (1);
 	}
 	return (0);

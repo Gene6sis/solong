@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   so_long.h                                          :+:      :+:    :+:   */
+/*   so_long_bonus.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:53:53 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 05:03:25 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 04:59:21 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef SO_LONG_H
-# define SO_LONG_H
+#ifndef SO_LONG_BONUS_H
+# define SO_LONG_BONUS_H
 
 # include <stdio.h>
 # include <stdlib.h>
@@ -32,6 +32,7 @@ typedef enum e_tiletype {
 	COLLECTABLE = 'C',
 	PLAYER = 'P',
 	EXIT = 'E',
+	ENEMY = 'X',
 }				t_tiletype;
 
 # ifdef LINUX
@@ -79,9 +80,11 @@ typedef struct s_data {
 	int				move_count;
 	int				exit_count;
 	int				player_count;
+	int				enemy_count;
 	void			*exit;
 	void			*floor;
 	void			*walls;
+	void			*enemy;
 	void			*frame_buf;
 	char			*addr;
 	int				bits_per_pixel;
@@ -104,5 +107,6 @@ void			ft_error(t_data *data, int error);
 int				key_hook(int keycode, t_data *data);
 void			ft_destroy_image(void *mlx, void *xpm);
 void			ft_moves(t_data *data);
+void			load_enemy(t_data *data);
 
 #endif

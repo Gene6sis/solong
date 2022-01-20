@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sprites.c                                       :+:      :+:    :+:   */
+/*   ft_sprites_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 22:42:19 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 05:00:18 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 05:01:23 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 static void	load_floor_wall(t_data *data)
 {
@@ -66,5 +66,7 @@ int	ft_sprites(t_data *data)
 	load_player(data);
 	load_collectable(data);
 	load_exit(data);
+	if (data->enemy_count != 0)
+		load_enemy(data);
 	return (0);
 }

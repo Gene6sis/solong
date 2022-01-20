@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_get_pixel.c                                     :+:      :+:    :+:   */
+/*   ft_get_pixel_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/23 00:25:15 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 04:58:17 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 05:05:00 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 void	put_pixel_to_frame_buf(t_data *data, int x, int y, int color)
 {

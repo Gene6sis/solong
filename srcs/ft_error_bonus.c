@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_error.c                                         :+:      :+:    :+:   */
+/*   ft_error_bonus.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/01/10 01:18:15 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 05:45:13 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 05:46:15 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 static void	ft_close(t_data *data, int error)
 {
@@ -24,6 +24,8 @@ static void	ft_close(t_data *data, int error)
 		ft_destroy_image(data->mlx, data->collectable.img);
 	if (error >= 8)
 		ft_destroy_image(data->mlx, data->exit);
+	if (error >= 9 && data->enemy_count != 0)
+		ft_destroy_image(data->mlx, data->enemy);
 	if (error >= 11)
 		ft_destroy_image(data->mlx, data->frame_buf);
 	if (error >= 11 && data->win != NULL)
@@ -31,7 +33,7 @@ static void	ft_close(t_data *data, int error)
 		mlx_clear_window(data->mlx, data->win);
 		mlx_destroy_window(data->mlx, data->win);
 	}
-	if (data->mlx != NULL && error >= 1)
+	if (error >= 1 && data->mlx != NULL)
 		mlx_destroy_display(data->mlx);
 }
 

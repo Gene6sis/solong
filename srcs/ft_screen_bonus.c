@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_screen.c                                        :+:      :+:    :+:   */
+/*   ft_screen_bonus.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/22 23:41:25 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 05:11:14 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 05:01:14 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/so_long.h"
+#include "../includes/so_long_bonus.h"
 
 static void	ft_image_to_frame(t_data *data, void *img, int row, int col)
 {
@@ -43,6 +43,8 @@ static void	*ft_on_img(t_data *data, int row, int col)
 		return (data->collectable.img);
 	else if (data->map.array[row][col] == EXIT)
 		return (data->exit);
+	else if (data->map.array[row][col] == ENEMY)
+		return (data->enemy);
 	return (NULL);
 }
 
@@ -76,5 +78,6 @@ int	ft_screen(t_data *data)
 	ft_image_to_frame(data, data->player.img, data->player.row,
 		data->player.col);
 	mlx_put_image_to_window(data->mlx, data->win, data->frame_buf, 0, 0);
+	ft_moves(data);
 	return (0);
 }

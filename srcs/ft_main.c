@@ -1,27 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_main.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: adben-mc <adben-mc@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/12/15 00:46:58 by adben-mc          #+#    #+#             */
-/*   Updated: 2022/01/20 04:16:41 by adben-mc         ###   ########.fr       */
+/*   Updated: 2022/01/20 05:03:44 by adben-mc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/so_long.h"
-
-void	load_enemy(t_data *data)
-{
-	int		width;
-	int		height;
-
-	data->enemy = mlx_xpm_file_to_image(data->mlx, "./assets/enemy.xpm", &width,
-			&height);
-	if (!data->enemy)
-		ft_end("Failed to load enemy sprite.", data, 8);
-}
 
 int	ft_end(char *message, t_data *data, int error)
 {
